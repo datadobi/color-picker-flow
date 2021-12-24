@@ -2,7 +2,7 @@
   "name": "no-name",
   "license": "UNLICENSED",
   "dependencies": {
-    "@appreciated/color-picker": "^2.0.0-beta.4",
+    "@datadobi/color-picker": "^2.0.0-beta.4-datadobi2",
     "@polymer/iron-icon": "3.0.1",
     "@polymer/iron-list": "3.1.0",
     "@polymer/polymer": "3.2.0",
@@ -83,7 +83,7 @@
   },
   "vaadin": {
     "dependencies": {
-      "@appreciated/color-picker": "2.0.0-beta.4",
+      "@datadobi/color-picker": "2.0.0-beta.4-datadobi2",
       "@polymer/iron-icon": "3.0.1",
       "@polymer/iron-list": "3.1.0",
       "@polymer/polymer": "3.2.0",
@@ -152,6 +152,6 @@
       "workbox-precaching": "6.2.0",
       "workbox-webpack-plugin": "6.2.0"
     },
-    "hash": "1eca5a038be97b12efe4b0df6539faab04c2076c5c37835b08da1e0fc3f1878d"
+    "hash": "1792991bd4d99b5dfec901dc123dab3460864ad2ff4d6d91f092d7e7dccb9c9e"
   }
 }
