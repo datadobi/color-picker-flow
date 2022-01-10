@@ -6,7 +6,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>color-picker-flow</artifactId>
-    <version>2.0.0.beta3-datadobi4</version>
+    <version>2.0.0.beta3-datadobi5</version>
     <name>Color Picker for Flow</name>
     <description>Color Picker for Flow</description>
 
@@ -194,7 +194,7 @@
                         <configuration>
                             <!-- Generated file that shouldn't be included in add-ons -->
                             <excludes>
-                                <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                                <exclude>META-INF/VAADIN/**</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
