@@ -6,7 +6,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>color-picker-flow</artifactId>
-    <version>2.0.0.beta3-datadobi5</version>
+    <version>2.0.0.beta3-datadobi6</version>
     <name>Color Picker for Flow</name>
     <description>Color Picker for Flow</description>
 
@@ -22,7 +22,7 @@
         </license>
     </licenses>
     <properties>
-        <vaadin.version>21.0.2</vaadin.version>
+        <vaadin.version>22.0.2</vaadin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -92,6 +92,10 @@
                             <Vaadin-Package-Version>1</Vaadin-Package-Version>
                         </manifestEntries>
                     </archive>
+                    <!-- Generated file that shouldn't be included in add-ons -->
+                    <excludes>
+                        <exclude>META-INF/VAADIN/**</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
 
