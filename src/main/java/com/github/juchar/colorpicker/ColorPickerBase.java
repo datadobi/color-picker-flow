@@ -30,6 +30,8 @@ public interface ColorPickerBase<T> extends HasElement {
       = PropertyDescriptors.propertyWithDefault("disableHsl", false);
   PropertyDescriptor<Boolean, Boolean> DISABLE_ALPHA_PROPERTY
       = PropertyDescriptors.propertyWithDefault("disableAlpha", false);
+  PropertyDescriptor<Boolean, Boolean> DISABLE_SL_PROPERTY
+      = PropertyDescriptors.propertyWithDefault("disableSl", false);
   PropertyDescriptor<Double, Double> STEP_ALPHA_PROPERTY
       = PropertyDescriptors.propertyWithDefault("stepAlpha", 0.01d);
   PropertyDescriptor<Double, Double> STEP_HSL_PROPERTY
@@ -148,7 +150,7 @@ public interface ColorPickerBase<T> extends HasElement {
   /**
    * Check if alpha values are enabled.
    *
-   * @return {@code true} if hex values are enabled, {@code false} else
+   * @return {@code true} if alpha values are enabled, {@code false} else
    */
   default boolean isAlphaEnabled() {
     return !DISABLE_ALPHA_PROPERTY.get(this);
@@ -161,6 +163,24 @@ public interface ColorPickerBase<T> extends HasElement {
    */
   default void setAlphaEnabled(boolean enabled) {
     DISABLE_ALPHA_PROPERTY.set(this, !enabled);
+  }
+
+  /**
+   * Check if sl values are enabled.
+   *
+   * @return {@code true} if sl values are enabled, {@code false} else
+   */
+  default boolean isSlEnabled() {
+    return !DISABLE_SL_PROPERTY.get(this);
+  }
+
+  /**
+   * Enable or disable sl values.
+   *
+   * @param enabled {@code true} if sl values should be enabled, {@code false} else
+   */
+  default void setSlEnabled(boolean enabled) {
+    DISABLE_SL_PROPERTY.set(this, !enabled);
   }
 
   /**
