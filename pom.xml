@@ -22,7 +22,7 @@
         </license>
     </licenses>
     <properties>
-        <vaadin.version>22.0.5</vaadin.version>
+        <vaadin.version>23.0.9</vaadin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -210,9 +210,9 @@
 
     <distributionManagement>
         <repository>
-            <id>central</id>
+            <id>internal</id>
             <name>mavenserver-releases</name>
-            <url>http://mavenserver.dobi:8081/artifactory/libs-release-local</url>
+            <url>http://mavenserver.dobi:8081/artifactory/ext-release-local</url>
         </repository>
     </distributionManagement>
 </project>
