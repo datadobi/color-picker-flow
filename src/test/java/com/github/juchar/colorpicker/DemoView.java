@@ -23,5 +23,7 @@ public class DemoView extends VerticalLayout {
 
     add(new H1("Color Picker Demo"));
     add(colorPicker);
+
+    colorPicker.addValueChangeListener(event -> System.out.println("New color: " + event.getValue().toString()));
   }
 }

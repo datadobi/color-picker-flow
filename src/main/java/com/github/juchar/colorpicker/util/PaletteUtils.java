@@ -1,7 +1,8 @@
 package com.github.juchar.colorpicker.util;
 
-import elemental.json.Json;
-import elemental.json.JsonArray;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.node.ArrayNode;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,61 +11,61 @@ import java.util.stream.Collectors;
 
 public final class PaletteUtils {
 
+  private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
   private PaletteUtils() {
     // Prevent instantiation
   }
 
-  public static <T> JsonArray paletteToJson(Collection<T> palette,
-      Function<T, String> toPresentation) {
-    final List<String> convertedPalette
-        = palette.stream().map(toPresentation).collect(Collectors.toList());
-    final JsonArray jsonPalette = Json.createArray();
-
-    for (int i = 0; i < palette.size(); i++) {
-      jsonPalette.set(i, convertedPalette.get(i));
+  public static <T> ArrayNode paletteToJson(Collection<T> palette,
+                                            Function<T, String> toPresentation) {
+    final List<String> convertedPalette = palette.stream().map(toPresentation).toList();
+    final ArrayNode jsonPalette = OBJECT_MAPPER.createArrayNode();
+    for (String s : convertedPalette) {
+      jsonPalette.add(s);
     }
 
     return jsonPalette;
   }
 
-  public static <T> JsonArray palettesToJson(Collection<Collection<T>> palettes,
+  public static <T> ArrayNode palettesToJson(Collection<Collection<T>> palettes,
       Function<T, String> toPresentation) {
     final List<Collection<T>> convertedPalettes = new ArrayList<>(palettes);
-    final JsonArray jsonPalettes = Json.createArray();
+    final ArrayNode jsonPalettes = OBJECT_MAPPER.createArrayNode();
 
-    for (int i = 0; i < convertedPalettes.size(); i++) {
-      jsonPalettes.set(i, paletteToJson(convertedPalettes.get(i), toPresentation));
+    for (Collection<T> palette : convertedPalettes) {
+      jsonPalettes.add(paletteToJson(palette, toPresentation));
     }
 
     return jsonPalettes;
   }
 
-  public static JsonArray palettesToJson(Collection<Collection<String>> palettes) {
+  public static ArrayNode palettesToJson(Collection<Collection<String>> palettes) {
     return palettesToJson(palettes, Function.identity());
   }
 
-  public static <T> List<T> jsonToPalette(JsonArray jsonPalette, Function<String, T> toColor) {
-    List<T> palette = new ArrayList<>(jsonPalette.length());
+  public static <T> List<T> jsonToPalette(ArrayNode jsonPalette, Function<String, T> toColor) {
+    List<T> palette = new ArrayList<>(jsonPalette.size());
 
-    for (int i = 0; i < jsonPalette.length(); i++) {
-      palette.add(toColor.apply(jsonPalette.getString(i)));
+    for (int i = 0; i < jsonPalette.size(); i++) {
+      palette.add(toColor.apply(jsonPalette.get(i).asString()));
     }
 
     return palette;
   }
 
-  public static <T> List<List<T>> jsonToPalettes(JsonArray jsonPalettes,
+  public static <T> List<List<T>> jsonToPalettes(ArrayNode jsonPalettes,
       Function<String, T> toColor) {
-    List<List<T>> palettes = new ArrayList<>(jsonPalettes.length());
+    List<List<T>> palettes = new ArrayList<>(jsonPalettes.size());
 
-    for (int i = 0; i < jsonPalettes.length(); i++) {
-      palettes.add(jsonToPalette(jsonPalettes.getArray(i), toColor));
+    for (int i = 0; i < jsonPalettes.size(); i++) {
+      palettes.add(jsonToPalette((ArrayNode) jsonPalettes.get(i), toColor));
     }
 
     return palettes;
   }
 
-  public static List<List<String>> jsonToPalettes(JsonArray jsonPalettes) {
+  public static List<List<String>> jsonToPalettes(ArrayNode jsonPalettes) {
     return jsonToPalettes(jsonPalettes, Function.identity());
   }
 }

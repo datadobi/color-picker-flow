@@ -6,15 +6,15 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>color-picker-flow</artifactId>
-    <version>2.1.0.datadobi1</version>
+    <version>3.0.0.datadobi1</version>
     <name>Color Picker for Flow</name>
     <description>Color Picker for Flow</description>
 
     <properties>
-        <vaadin.version>24.1.4</vaadin.version>
+        <vaadin.version>25.1.1</vaadin.version>
 
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>24</maven.compiler.source>
+        <maven.compiler.target>24</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -87,6 +87,11 @@
             <artifactId>vaadin-core</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-dev</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
@@ -124,9 +129,9 @@
             </plugin>
 
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>11.0.14</version>
+                <groupId>org.eclipse.jetty.ee10</groupId>
+                <artifactId>jetty-ee10-maven-plugin</artifactId>
+                <version>12.1.8</version>
                 <configuration>
                     <scan>-1</scan>
                     <!-- Use test scope because the UI/test classes are in
@@ -265,8 +270,8 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.eclipse.jetty</groupId>
-                        <artifactId>jetty-maven-plugin</artifactId>
+                        <groupId>org.eclipse.jetty.ee10</groupId>
+                        <artifactId>jetty-ee10-maven-plugin</artifactId>
                         <configuration>
                             <scan>0</scan>
                             <stopPort>8081</stopPort>

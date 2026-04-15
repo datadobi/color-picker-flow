@@ -5,7 +5,8 @@ import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.PropertyDescriptor;
 import com.vaadin.flow.component.PropertyDescriptors;
 import com.vaadin.flow.function.SerializableFunction;
-import elemental.json.JsonArray;
+import tools.jackson.databind.node.ArrayNode;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -226,7 +227,7 @@ public interface ColorPickerBase<T> extends HasElement {
    * @return The palettes
    */
   default List<List<T>> getPalettes() {
-    return PaletteUtils.jsonToPalettes((JsonArray) getElement().getPropertyRaw("palettes"),
+    return PaletteUtils.jsonToPalettes((ArrayNode) getElement().getPropertyRaw("palettes"),
         getPresentationToModel());
   }
 
