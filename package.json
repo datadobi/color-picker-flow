@@ -2,7 +2,7 @@
   "name": "no-name",
   "license": "UNLICENSED",
   "dependencies": {
-    "@datadobi/color-picker": "3.0.0-datadobi1",
+    "@datadobi/color-picker": "3.0.0-datadobi2",
     "@vaadin/aura": "25.1.0",
     "@vaadin/common-frontend": "0.0.22",
     "@vaadin/react-components": "25.1.0",
@@ -37,7 +37,7 @@
   },
   "vaadin": {
     "dependencies": {
-      "@datadobi/color-picker": "3.0.0-datadobi1",
+      "@datadobi/color-picker": "3.0.0-datadobi2",
       "@polymer/polymer": "3.5.1",
       "@vaadin/aura": "25.1.0",
       "@vaadin/common-frontend": "0.0.22",
@@ -71,7 +71,7 @@
       "vite-plugin-checker": "0.12.0",
       "workbox-build": "7.4.0"
     },
-    "hash": "b6c79c715cfe2bc050b0d2d4a43cea3b335b401712d948fc147a28dc3be95ee9"
+    "hash": "1f2e49a3695a9fb23bf502f43d01bb6f5bb8b07cfbe5d4cfea3d2237f58c0fab"
   },
   "overrides": {
     "@vaadin/vaadin-development-mode-detector": "$@vaadin/vaadin-development-mode-detector",
