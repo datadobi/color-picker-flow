@@ -6,7 +6,7 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>color-picker-flow</artifactId>
-    <version>3.0.0.datadobi3</version>
+    <version>3.0.0.datadobi4</version>
     <name>Color Picker for Flow</name>
     <description>Color Picker for Flow</description>
 
@@ -121,9 +121,16 @@
                             <Vaadin-Package-Version>1</Vaadin-Package-Version>
                         </manifestEntries>
                     </archive>
-                    <!-- Generated file that shouldn't be included in add-ons -->
+                    <!-- Generated files that shouldn't be included in add-ons.
+                         When -Pproduction is active, the Vaadin build-frontend goal writes
+                         application-level bundle artifacts into target/classes/META-INF/VAADIN/.
+                         Shipping those in the JAR clobbers the consuming app's real stats.json
+                         on the classpath, so we strip them out here. -->
                     <excludes>
                         <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                        <exclude>META-INF/VAADIN/config/stats.json</exclude>
+                        <exclude>META-INF/VAADIN/config/bundle-size.html</exclude>
+                        <exclude>META-INF/VAADIN/webapp/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -255,10 +262,13 @@
                         <artifactId>maven-jar-plugin</artifactId>
                         <version>3.2.2</version>
                         <configuration>
-                            <!-- Generated file that shouldn't be included in add-ons -->
+                            <!-- Generated files that shouldn't be included in add-ons.
+                                 See top-level maven-jar-plugin config for rationale. -->
                             <excludes>
                                 <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
-                                <exclude>META-INF/VAADIN/webapp/**/*</exclude>
+                                <exclude>META-INF/VAADIN/config/stats.json</exclude>
+                                <exclude>META-INF/VAADIN/config/bundle-size.html</exclude>
+                                <exclude>META-INF/VAADIN/webapp/**</exclude>
                             </excludes>
                         </configuration>
                     </plugin>
